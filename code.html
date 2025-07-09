@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方方老師 | AI 時代的教育先行者</title>
+    
+    <!-- 引入 Google Fonts 和 Font Awesome 圖示庫 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* CSS 樣式開始 */
+        :root {
+            --primary-color: #4a90e2; /* 科技藍 */
+            --secondary-color: #f5a623; /* 溫暖橘 */
+            --dark-color: #333;
+            --light-color: #f4f4f4;
+            --white-color: #fff;
+            --text-color: #555;
+            --section-padding: 6rem 5%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            line-height: 1.7;
+            color: var(--text-color);
+            background-color: var(--white-color);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            color: var(--dark-color);
+            line-height: 1.3;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        section {
+            padding: var(--section-padding);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary-color);
+            color: var(--white-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: var(--primary-color);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+        .btn-secondary:hover {
+            background: transparent;
+            color: var(--secondary-color);
+        }
+        
+        /* 動畫效果：元素載入時淡入 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* --- 1. 主視覺區 (Hero Section) --- */
+        #hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071&auto=format&fit=crop') no-repeat center center/cover;
+            color: var(--white-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 5%;
+        }
+
+        #hero .content h1 {
+            font-size: 3.5rem;
+            color: var(--white-color);
+            margin-bottom: 1rem;
+        }
+
+        #hero .content h2 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--white-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        #hero .content h2 .cursor {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            margin-left: 3px;
+            width: 3px;
+            animation: blink 1s infinite;
+        }
+
+        #hero .content p {
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto 2.5rem auto;
+            font-weight: 400;
+        }
+        
+        #hero .buttons .btn {
+            margin: 0 10px;
+        }
+        
+        @keyframes blink {
+            0% { background-color: var(--secondary-color); }
+            49% { background-color: var(--secondary-color); }
+            50% { background-color: transparent; }
+            99% { background-color: transparent; }
+            100% { background-color: var(--secondary-color); }
+        }
+
+        /* --- 2. 關於我 (About Section) --- */
+        #about {
+            background: var(--light-color);
+        }
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+        }
+        .about-image {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .about-image img {
+            width: 100%;
+            display: block;
+        }
+        .about-text {
+            flex: 1.5;
+        }
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+        .about-text strong {
+            color: var(--primary-color);
+        }
+
+        /* --- 3. 核心理念 (Philosophy Section) --- */
+        .philosophy-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .card {
+            background: var(--white-color);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+        .card .icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* --- 4. AI工具箱 (Toolkit Section) --- */
+        #toolkit {
+            background: var(--light-color);
+        }
+        .toolkit-container {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+        .toolkit-container > p {
+            max-width: 700px;
+            margin: -3rem auto 3rem auto;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tab-button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: var(--white-color);
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        .tab-button.active, .tab-button:hover {
+            background: var(--primary-color);
+            color: var(--white-color);
+            border-color: var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+            animation: fadeInContent 0.5s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        
+        .tool-showcase {
+            background: var(--white-color);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: left;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .tool-showcase .text {
+            flex: 1;
+        }
+        .tool-showcase .mockup {
+            flex: 1;
+            background: #f0f0f0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+            min-height: 200px;
+            white-space: pre-wrap;
+            color: #444;
+        }
+        
+        .typing-demo {
+            width: max-content;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+            overflow: hidden;
+            border-right: .15em solid orange;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--secondary-color); }
+        }
+        
+        @keyframes fadeInContent {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 5. 媒體報導 (Testimonials Section) --- */
+        .slider-container {
+            max-width: 800px;
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            background: var(--white-color);
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .slide {
+            display: none;
+            text-align: center;
+            animation: fadeEffect 1.5s;
+        }
+        .slide.active {
+            display: block;
+        }
+        .slide img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            border: 4px solid var(--light-color);
+        }
+        .slide p {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        .slide .author {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .slider-nav button {
+            background-color: rgba(0,0,0,0.3);
+            border: none;
+            color: white;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+        .slider-nav button:hover {
+            background-color: var(--primary-color);
+        }
+        .prev {
+            margin-left: -50px;
+        }
+        .next {
+            margin-right: -50px;
+        }
+        
+        @keyframes fadeEffect {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
+        
+        /* --- 6. 聯絡我 (Contact Section) --- */
+        #contact {
+            background: var(--light-color);
+        }
+        .contact-form {
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+        }
+        .contact-form h3 { text-align: center; }
+        .contact-form p { text-align: center; margin-bottom: 2rem; }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        textarea.form-control {
+            resize: vertical;
+            height: 150px;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .social-links a {
+            color: var(--dark-color);
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* --- Footer --- */
+        footer {
+            background: var(--dark-color);
+            color: #aaa;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* --- 響應式設計 (Responsive Design) --- */
+        @media(max-width: 992px) {
+            h2 { font-size: 2rem; }
+            section { padding: 4rem 5%; }
+            .about-content { flex-direction: column; text-align: center; }
+            .about-image { max-width: 300px; margin-bottom: 2rem; }
+            .philosophy-cards { grid-template-columns: 1fr; }
+        }
+        
+        @media(max-width: 768px) {
+            #hero .content h1 { font-size: 2.8rem; }
+            #hero .content h2 { font-size: 1.4rem; }
+            
+            .tool-showcase {
+                flex-direction: column;
+            }
+            .prev { margin-left: -20px; }
+            .next { margin-right: -20px; }
+        }
+        
+        @media(max-width: 576px) {
+             #hero .content h1 { font-size: 2.2rem; }
+             #hero .content p { font-size: 1rem; }
+             #hero .buttons { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+             .tabs { flex-direction: column; }
+             .slider-nav { display: none; } /* On small screens, hide arrows */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. 主視覺區塊 (Hero Section) -->
+    <header id="hero">
+        <div class="content">
+            <h1>方方老師</h1>
+            <h2 id="subtitle"></h2>
+            <p>「在 AI 崛起的時代，我們不該讓孩子與機器賽跑，而是要教他們如何駕馭機器，成為有溫度、會思考的創造者。我為學習創造遊戲，以遊戲啟動深度學習。」</p>
+            <div class="buttons">
+                <a href="#about" class="btn">探索我的理念</a>
+                <a href="#toolkit" class="btn btn-secondary">體驗AI工具</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. 關於我 (About Section) -->
+        <section id="about" class="fade-in">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <!-- 圖片來源: pexels.com, 可替換為真實照片 -->
+                        <img src="https://images.pexels.com/photos/3762800/pexels-photo-3762800.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="方方老師與學生互動">
+                    </div>
+                    <div class="about-text">
+                        <h3>點燃每個孩子內心的「為什麼」</h3>
+                        <p>方方老師是一位充滿熱情與前瞻性的教育工作者，她堅信教育的核心是啟發孩子的好奇心與獨立思考能力。面對 AI 技術浪潮的衝擊，她並非感到焦慮，而是看到了翻轉傳統教育的契機。</p>
+                        <p>她致力於將複雜的 AI 技術轉化為教師們能輕易上手的教學工具，並將「遊戲化學習」作為核心方法，設計出無數讓學生們沉浸其中的課程與活動。</p>
+                        <p>從開發能一鍵生成教案的 AI 助教，到設計培養哲學思辨的互動遊戲，方方老師的目標始終如一：<strong>培養孩子具備適應未來、創造未來的關鍵能力。</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 核心理念 (Philosophy Section) -->
+        <section id="philosophy" class="fade-in">
+            <div class="container">
+                <h2>我的三大教育支柱</h2>
+                <div class="philosophy-cards">
+                    <div class="card fade-in">
+                        <div class="icon"><i class="fas fa-robot"></i></div>
+                        <h4>AI 賦能，而非取代</h4>
+                        <p>AI 是教師最得力的助手，能將教師從繁瑣的行政與備課中解放，專注於更高價值的引導與陪伴。</p>
+                    </div>
+                    <div class="card fade-in">
+                        <div class="icon"><i class="fas fa-gamepad"></i></div>
+                        <h4>為學習創造遊戲</h4>
+                        <p>遊戲是孩子的天性，也是最好的學習驅動力。我相信「好玩的學習」才「好學」，才能激發內在動機。</p>
+                    </div>
+                    <div class="card fade-in">
+                        <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                        <h4>培育未來思維</h4>
+                        <p>未來的世界充滿不確定性，孩子需要的不只是知識，而是思辨、共情與創造的能力，從容應對挑戰。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. AI工具箱 (Toolkit Section) -->
+        <section id="toolkit" class="fade-in">
+            <div class="toolkit-container">
+                <h2>我的 AI 教學工具箱</h2>
+                <p>我將複雜的 AI 指令（咒語）打包成簡單易用的聊天機器人，讓每位老師都能輕鬆成為 AI 教學大師。</p>
+                <div class="tabs">
+                    <button class="tab-button active" data-tab="1">教案設計 AI</button>
+                    <button class="tab-button" data-tab="2">遊戲化教材產生器</button>
+                    <button class="tab-button" data-tab="3">SDGs 故事 AI</button>
+                </div>
+
+                <div id="tab1" class="tab-content active">
+                    <div class="tool-showcase">
+                        <div class="text">
+                            <h3>教案設計 AI</h3>
+                            <p>還在為寫教案而煩惱嗎？只需輸入課程主題、年級與教學目標，AI 就能在 30 秒內為您生成一份包含引起動機、發展活動與總結評量的完整教案。</p>
+                        </div>
+                        <div class="mockup">
+                            <strong style="color: var(--primary-color);">&gt; 輸入:</strong> 國小三年級，SDG 14 海洋生態
+                            <br><br>
+                            <strong style="color: var(--secondary-color);">&gt; 生成中...</strong>
+                            <div class="typing-demo">
+1. 引起動機：播放海龜影片
+2. 發展活動：塑膠袋怪物故事
+3. 總結評量：畫出海洋守護者
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab2" class="tab-content">
+                     <div class="tool-showcase">
+                        <div class="text">
+                            <h3>遊戲化教材產生器</h3>
+                            <p>將任何教材轉化為互動問答遊戲！支援選擇題、是非題、填充題，並自動生成計分與回饋機制，讓隨堂測驗像一場刺激的冒險。</p>
+                        </div>
+                        <div class="mockup" style="text-align:center;">
+                            <p>Q: 海洋裡最大的動物是？</p>
+                            <button style="padding:5px 10px; margin:5px; border:1px solid #ccc; border-radius: 5px;">A. 鯊魚</button>
+                            <button style="padding:5px 10px; margin:5px; border:1px solid #ccc; border-radius: 5px; background: #90ee90;">B. 藍鯨</button>
+                            <h4 style="color: green; margin-top: 1rem;">答對了！ +10分！</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="tab3" class="tab-content">
+                    <div class="tool-showcase">
+                        <div class="text">
+                            <h3>SDGs 故事 AI</h3>
+                            <p>永續發展目標 (SDGs) 的概念很抽象？讓 AI 為您創作生動的故事吧！選擇一個 SDG 目標，AI 就能編寫出適合孩子閱讀的寓言或情境故事。</p>
+                        </div>
+                        <div class="mockup" style="font-style: italic;">
+                            「在蔚藍的大海深處，住著一隻名叫奇奇的小海龜。有一天，他誤把一個漂浮的塑膠袋當成了美味的水母...」
+                            <br><br>
+                            這個故事不僅讓孩子們了解塑膠污染的危害，也啟發他們思考如何保護海洋。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 媒體報導與肯定 (Testimonials Section) -->
+        <section id="testimonials" class="fade-in">
+            <div class="container">
+                 <h2>來自各界的聲音</h2>
+                 <div class="slider-container">
+                    <div class="slide active">
+                        <!-- 圖片來源: pexels.com, 可替換為真實照片 -->
+                        <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="陳老師">
+                        <p>「方方老師的 AI 工具徹底改變了我的備課方式！以前需要花一整個下午，現在幾分鐘就搞定，而且學生的課堂反應變得超級熱烈！」</p>
+                        <cite class="author">— 新北市國小，陳老師</cite>
+                    </div>
+                     <div class="slide">
+                        <!-- 圖片來源: pexels.com, 可替換為真實照片 -->
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="親子天下 Logo">
+                         <p>「被譽為『AI 教學傳教士』的方方老師，正用她的熱情與智慧，為台灣的教育現場注入一股創新的活水。」</p>
+                         <cite class="author">— 《親子天下》專題報導</cite>
+                    </div>
+                    <div class="slide">
+                        <!-- 圖片來源: pexels.com, 可替換為真實照片 -->
+                        <img src="https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=600" alt="王教授">
+                         <p>「方方老師的工作完美詮釋了科技如何為教育帶來人性化的變革。她的實踐證明，AI 不僅是工具，更是催化深度學習的觸媒。」</p>
+                         <cite class="author">— 國立台灣師範大學，教育科技系，王教授</cite>
+                    </div>
+
+                    <div class="slider-nav">
+                        <button class="prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+                        <button class="next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+                    </div>
+                 </div>
+            </div>
+        </section>
+
+        <!-- 6. 聯絡我 (Contact Section) -->
+        <section id="contact" class="fade-in">
+            <div class="container">
+                <div class="contact-form">
+                    <h3>一起為教育的未來努力</h3>
+                    <p>如果您對 AI 融入教學感興趣、需要客製化的師資培訓，或有任何合作想法，歡迎隨時與我聯繫。</p>
+                    <form action="#">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="您的電子郵件" required>
+                        </div>
+                        <div class="form-group">
+                             <input type="text" class="form-control" placeholder="服務單位">
+                        </div>
+                        <div class="form-group">
+                            <textarea class="form-control" placeholder="您的訊息" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">送出訊息</button>
+                    </form>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- 頁腳 -->
+    <footer>
+        <p>&copy; 2025 方方老師 (FangFang Laoshi). All Rights Reserved.</p>
+    </footer>
+
+    <script>
+    // JavaScript 程式碼開始
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // 1. 副標題打字機效果
+        const subtitleEl = document.getElementById('subtitle');
+        const text = 'AI x 教育革新者｜遊戲化學習設計師｜未來思維培育家';
+        let index = 0;
+        
+        function typeWriter() {
+            if (index < text.length) {
+                subtitleEl.innerHTML = text.substring(0, index + 1) + '<span class="cursor"></span>';
+                index++;
+                setTimeout(typeWriter, 100);
+            } else {
+                // 打字結束後讓光標持續閃爍
+                subtitleEl.innerHTML = text + '<span class="cursor"></span>';
+            }
+        }
+        typeWriter();
+
+        // 2. 元素淡入動畫 (Intersection Observer)
+        const faders = document.querySelectorAll('.fade-in');
+        const appearOptions = {
+            threshold: 0.2, // 元素可見 20% 時觸發
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+
+        // 3. AI 工具箱 Tabs 切換功能
+        const tabsContainer = document.querySelector('.tabs');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabsContainer.addEventListener('click', function(e) {
+            const clicked = e.target.closest('.tab-button');
+            if (!clicked) return;
+
+            // 移除所有按鈕的 active class
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            // 為被點擊的按鈕加上 active class
+            clicked.classList.add('active');
+            
+            // 隱藏所有內容
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            // 顯示對應的內容
+            const activeContent = document.getElementById('tab' + clicked.dataset.tab);
+            activeContent.classList.add('active');
+        });
+
+        // 4. Testimonials Slider 輪播功能
+        let slideIndex = 0;
+        let slideInterval;
+        const slides = document.querySelectorAll('.slide');
+
+        function showSlides(n) {
+            // 處理邊界
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+            
+            // 隱藏所有 slide
+            slides.forEach(slide => slide.classList.remove('active'));
+            
+            // 顯示當前的 slide
+            slides[slideIndex].classList.add('active');
+        }
+
+        // 換頁函數
+        window.moveSlide = function(n) {
+            clearInterval(slideInterval); // User interaction stops auto-play
+            showSlides(slideIndex += n);
+            startInterval(); // Restart auto-play
+        }
+
+        // 自動播放函數
+        function startInterval() {
+             slideInterval = setInterval(() => {
+                moveSlide(1);
+            }, 5000); // 每 5 秒換一張
+        }
+        
+        // 初始啟動
+        showSlides(slideIndex);
+        startInterval();
+
+    });
+    </script>
+</body>
+</html>
